@@ -1,11 +1,4 @@
-/// <reference no-default-lib="true" />
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-/// <reference lib="dom.asynciterable" />
-/// <reference lib="deno.ns" />
-
-import type { Plugin } from "$fresh/server.ts";
-import type { Config } from "./deps.ts";
+import type { Config, Plugin } from "./deps.ts";
 
 /**
  * The type of plugin options.
