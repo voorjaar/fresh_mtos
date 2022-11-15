@@ -1,5 +1,5 @@
 import { defineConfig } from "./mod.ts";
-import { assertEquals } from "$std/testing/asserts.ts";
+import { assertEquals } from "./test_deps.ts";
 
 Deno.test("test define config", (): void => {
   const onMatch = (a: HTMLAnchorElement) => {
