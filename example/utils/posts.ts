@@ -7,10 +7,12 @@ export interface Post {
   content: string;
 }
 
+const dirname = new URL(".", import.meta.url).pathname;
+
 export async function loadPost(slug: string): Promise<Post | null> {
   let text: string;
   try {
-    text = await Deno.readTextFile(`./data/posts/${slug}.md`);
+    text = await Deno.readTextFile(`${dirname}../data/posts/${slug}.md`);
   } catch (err) {
     if (err instanceof Deno.errors.NotFound) {
       return null;
@@ -30,7 +32,8 @@ export async function loadPost(slug: string): Promise<Post | null> {
 
 export async function listPosts(): Promise<Post[]> {
   const promises = [];
-  for await (const entry of Deno.readDir("./data/posts")) {
+  console.log(dirname);
+  for await (const entry of Deno.readDir(`${dirname}../data/posts`)) {
     const slug = entry.name.replace(".md", "");
     promises.push(loadPost(slug));
   }
