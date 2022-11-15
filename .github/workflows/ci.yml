@@ -41,6 +41,5 @@ jobs:
       - name: Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "fresh-mtos",
+          project: "fresh-mtos"
           entrypoint: "./example/main.ts"
-
