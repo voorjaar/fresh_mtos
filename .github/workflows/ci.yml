@@ -4,12 +4,8 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{ matrix.kind }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macOS-latest, ubuntu-latest, windows-latest]
-
+    name: fresh-mtos
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Setup Deno
@@ -30,8 +26,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         if: |
-          matrix.os == 'ubuntu-latest' &&
-          startsWith(github.repository, 'justjavac') && 
+          startsWith(github.repository, 'voorjaar') && 
           startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,6 +35,8 @@ jobs:
 
       - name: Deploy
         uses: denoland/deployctl@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           project: "fresh-mtos"
           entrypoint: "./example/main.ts"
