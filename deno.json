@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "start": "cd example && deno run -A --watch=static/,routes/ dev.ts"
+  },
+  "importMap": "./example/import_map.json"
+}
