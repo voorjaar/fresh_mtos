@@ -1,0 +1,24 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+
+      - name: Format
+        run: deno fmt --check
+
+      - name: Check
+        run: deno check --remote mod.ts
+
+      - name: Lint
+        run: deno lint
+
+      - name: Tests
+        run: deno test
