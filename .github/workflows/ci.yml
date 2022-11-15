@@ -37,3 +37,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           draft: true
+
+      - name: Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: "fresh-mtos",
+          entrypoint: "./example/main.ts"
+
