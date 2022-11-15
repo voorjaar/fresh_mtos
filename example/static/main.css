@@ -1,0 +1,47 @@
+.animated {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  height: 8px;
+  width: 100%;
+  z-index: 50;
+  background-color: #fdd07f;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #fdb258;
+  transition: width 0.3s ease;
+}
